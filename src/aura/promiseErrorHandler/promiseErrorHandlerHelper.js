@@ -17,7 +17,14 @@
 				else if (state === "ERROR") {
 					cmp.getSuper().find('leh').passErrors(a.getError());
 					reject(Error(a.getError()));
+				} else if (state === "INCOMPLETE"){
+					let miss = [{
+						"pageErrors" : [{"message" : "No Connection Available"}]
+					}];
+					cmp.getSuper().find('leh').passErrors(miss);
+					reject(Error(miss));
 				}
+
 			});
 			$A.enqueueAction(action);
 		});
@@ -37,6 +44,12 @@
 				else if (state === "ERROR") {
 					cmp.getSuper().find('leh').passErrors(a.getError());
 					reject(Error(a.getError()));
+				} else if (state === "INCOMPLETE"){
+					let miss = [{
+						"pageErrors" : [{"message" : "No Connection Available"}]
+					}];
+					cmp.getSuper().find('leh').passErrors(miss);
+					reject(Error(miss));
 				}
 			});
 			$A.enqueueAction(action);
